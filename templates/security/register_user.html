@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Flash Cards - Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Faster+One&family=Finger+Paint&family=Gugi&family=Roboto&family=Rubik&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+
+<body>
+
+  <h1 style="font-size:3rem; padding-bottom:20px;" class="title">FLASH CARDS</h1>
+  <div class="jumbotron login-and-register-head">
+    <h5 class="login-register-title">REGISTER</h5>
+  </div>
+  <div class="container-fluid">
+    {% from "security/_macros.html" import render_field_with_errors, render_field %}
+    <form action="{{ url_for_security('register') }}" method="POST" name="register_user_form">
+      {{ register_user_form.hidden_tag() }}
+      <div class="row mb-3 container-fluid">
+        <div class="col-sm-2 input_field container">
+          {{ render_field_with_errors(register_user_form.username, class="form-control username-input ", placeholder="Name") }}
+        </div>
+        <div class="col-sm-2 input_field container">
+          {{ render_field_with_errors(register_user_form.email, class="form-control username-input ", placeholder="Email") }}
+        </div>
+        <div class="col-sm-2 input_field container">
+          {{ render_field_with_errors(register_user_form.password, class="form-control username-input ", placeholder="Password") }}
+        </div>
+        {% if register_user_form.password_confirm %}
+        <div class="col-sm-2 input_field container">
+          {{ render_field_with_errors(register_user_form.password_confirm, class="form-control username-input ", placeholder="Confirm Password") }}
+        </div>
+        {% endif %}
+      </div>
+
+      {{ render_field(register_user_form.submit, class="btn btn-primary") }}
+    </form>
+    <!-- {% include "security/_menu.html" %} -->
+
+    <br>
+    <br>
+    <a href="/">Back to Login</a>
+  </div>
+
+</body>
+
+<footer style="margin-top:60px;" class="footer"> Copyrights © Mohnish, 2021 </footer>
+
+</html>

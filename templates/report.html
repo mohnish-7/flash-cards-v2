@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Flash Cards - Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Faster+One&family=Finger+Paint&family=Gugi&family=Roboto&family=Rubik&display=swap" rel="stylesheet">
+
+
+<body>
+  <style media="screen">
+    body {
+      font-family: "Roboto";
+      text-align: center;
+      background-color: #39AEA9;
+
+    }
+    .deck-body {
+      text-align: left;
+    }
+    .deck {
+      margin: 25px;
+      background-color: #FFAB4C;
+      border-width: 7px;
+      border-radius: 15px;
+      border-color: #212121;
+    }
+    .card-title {
+      font-family: "Gugi";
+      font-size: 2rem;
+      padding-bottom: 20px;
+    }
+    .report-head {
+      margin: 30px 0px;
+      padding: 25px;
+      font-size: 4rem;
+      color: #fff;
+      background-color: #444941;
+      border-radius: 20px;
+      font-family: "Gugi";
+    }
+    .details {
+      margin-bottom: 30px;
+    }
+    .score {
+      display: inline;
+      margin-right: 240px;
+    }
+
+    .last-review {
+      display: inline;
+      margin-right: 200px;
+      margin-bottom: 30px;
+    }
+
+    .num-reviewed {
+      display: inline;
+      margin-right: 35px;
+    }
+    .score-details {
+      display: inline;
+      font-size: 20px;
+    }
+
+
+
+
+
+  </style>
+<div  id="dashboard">
+
+
+  <div class="jumbotron report-head col-sm-12">
+    <h3 style="margin-bottom:0px;">{{usr_name}}'s Report</h3>
+    {% if flag == 1 %}
+    <h5 style="margin-bottom:0px;margin-top:50px;color:#AAA492;">No Decks have been created yet.</h5>
+    {% endif %}
+  </div>
+
+  <div class="row">
+    {% for deck in decks %}
+    <div   class="col-sm-12">
+      <div class="card deck">
+        <div class="card-body deck-body">
+
+          <div>
+          <strong>
+            <h5 class="card-title">{{deck['deck_name']}}</h5>
+          </strong>
+          <div class="details">
+            <strong>
+              <div class="score">
+                <h5 style="display:inline;">Latest Score: </h5>
+              </div>
+              <p class="score-details">{{deck['score']}}</p>
+              <br>
+              <div class="num-reviewed">
+                <h5 style="display:inline;">Number of cards reviewed last time: </h5>
+              </div>
+              <p style="display: inline;font-size: 20px;" class="score-details">{{deck['num']}}</p>
+              <br>
+              <div class="last-review">
+                <h5 style="display:inline;">Last reviewed on: </h5>
+              </div>
+              <p class="score-details">{{deck['last_review']}}</p>
+            </strong>
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+</body>
+
+</html>
