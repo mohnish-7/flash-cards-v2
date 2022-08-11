@@ -1,0 +1,5 @@
+First activate the environment by: . ./env/bin/activate
+
+Next start workers: celery -A main.celery worker -l info
+
+Next start the beat: celery -A main.celery beat --max-interval 1 -l info

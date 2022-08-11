@@ -1,0 +1,11 @@
+Flask==2.0.1
+Flask-SQLAlchemy==2.5.1
+email_validator
+bcrypt
+flask_restful
+flask_security
+redis
+celery[redis]
+weasyprint==52.5
+Flask_Caching
+
